@@ -1,7 +1,7 @@
 import { openBookForm } from "./index.js";
 import { generateRandomId } from "./randomId.js";
 
-const MAX_BOOKS = Math.floor((Math.min(window.innerWidth, 1700) - 0.3 * window.innerWidth) / 90);
+let MAX_BOOKS;
 let BOOKS = getBooks();
 const bookshelfDiv = document.querySelector("#bookshelf");
 
@@ -93,7 +93,7 @@ function createShelfElement() {
 function createBookElement(book, name, mediaType, length, completed) {
 	const newBook = document.createElement("div");
 	newBook.classList.add("book");
-	newBook.tabIndex = 100;
+	newBook.tabIndex = 0;
 
 	if (book === null) {
 		book = getBookRandomValues();
@@ -104,6 +104,7 @@ function createBookElement(book, name, mediaType, length, completed) {
 	applyBookStyles(newBook, book);
 
 	addBookClickEvent(newBook);
+	addBookMiddleClickEvent(newBook);
 
 	return newBook;
 }
@@ -123,10 +124,17 @@ function applyBookStyles(newBook, book) {
 }
 
 function addBookClickEvent(newBook) {
-	newBook.addEventListener("click", (e) => {
+	newBook.addEventListener("dblclick", (e) => {
 		const id = e.target.id;
 		const bookData = BOOKS.find((book) => book.id == id);
 		openBookForm(bookData.name, bookData.mediaType, bookData.length, bookData.completed, bookData.name, "Save Changes", "./images/pagebackground.jpg", "initial", bookData.id);
+	});
+}
+
+function addBookMiddleClickEvent(newBook) {
+	newBook.addEventListener("contextmenu", (e) => {
+		e.preventDefault();
+		deleteBook(e.target.id);
 	});
 }
 
@@ -140,6 +148,8 @@ function createAndAppendLabel(newBook, bookName, isFancy) {
 
 function createAndAppendTitle(title, parent, type) {
 	const label = document.createElement("p");
+
+	title = title.substring(0, 20);
 
 	if (type == "label") {
 		label.classList.add("vertical__text");
@@ -188,6 +198,9 @@ export function clearBooks() {
 	BOOKS = [];
 }
 
-BOOKS.forEach((book) => {
-	addBook(book);
-});
+export function setMaxBooks() {
+	MAX_BOOKS = Math.floor((Math.min(window.innerWidth, 1700) - 0.3 * window.innerWidth) / 90);
+	renderBooks();
+}
+
+setMaxBooks();

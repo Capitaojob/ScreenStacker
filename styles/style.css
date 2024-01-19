@@ -3,6 +3,7 @@
 	margin: 0;
 	box-sizing: border-box;
 	font-family: "Montserrat", sans-serif;
+	scroll-behavior: smooth;
 }
 
 :root {
@@ -16,8 +17,10 @@
 
 	--gold: #c0a50b;
 	--label-color: rgb(49, 42, 35);
-	--gray: #808080;
 	--green: #006400;
+
+	--gray: #5e5e5e;
+	--light-gray: #e4e4e4;
 	--white: #fff;
 }
 
@@ -40,12 +43,32 @@ h2 {
 }
 
 h1 {
+	position: relative;
 	font-size: 3em;
+	user-select: none;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+h1 span {
+	position: relative;
+	animation: StackerAnimation 500ms ease;
+}
+
+h1:hover span {
+	animation: none;
 }
 
 h2 {
 	font-size: 1em;
 	margin-bottom: 30px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	display: inline-block;
+	width: 100%;
 }
 
 .bookshelf {
@@ -69,6 +92,75 @@ h2 {
 	padding-top: 10px;
 }
 
+.large__btn {
+	position: relative;
+	border: 1px solid rgb(0, 0, 0);
+	background-color: white;
+	padding: 10px;
+	font-size: 1.4em;
+	cursor: pointer;
+}
+
+.danger__btn {
+	color: rgb(99, 14, 14) !important;
+	border-color: rgb(99, 14, 14);
+	background-color: #ff8080;
+}
+
+.create__btn {
+	color: var(--green) !important;
+	border-color: var(--green);
+	background-color: #80ff80;
+}
+
+.function__btn {
+	color: var(--gray) !important;
+	border-color: var(--gray) !important;
+	background-color: var(--light-gray) !important;
+}
+
+#end {
+	margin-bottom: 40px;
+}
+
+@keyframes StackerAnimation {
+	0% {
+		left: 0;
+	}
+
+	70% {
+		left: 10px;
+	}
+
+	90% {
+		left: -3px;
+	}
+
+	100% {
+		left: 0;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	main {
+		width: 95%;
+	}
+
+	.large__btn {
+		font-size: 1em;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1em;
+	}
+}
+
 /* .bookshelf .shelf:last-child::before {
   content: "";
   position: absolute;
@@ -88,19 +180,3 @@ h2 {
   bottom: -130px;
   background-color: var(--bookshelf-frame-color);
 } */
-
-@media screen and (max-width: 800px) {
-	main {
-		width: 95%;
-	}
-}
-
-@media screen and (max-width: 650px) {
-	h1 {
-		font-size: 2em;
-	}
-
-	h2 {
-		font-size: 1em;
-	}
-}

@@ -1,6 +1,9 @@
-import { addBook, clearBooks, deleteBook, renderBooks, updateBook } from "./books.js";
+import { addBook, clearBooks, deleteBook, renderBooks, updateBook, setMaxBooks } from "./books.js";
 
 const createBookButton = document.querySelector("[data-create-book]");
+const createBlankButton = document.querySelector("[data-create-blank]");
+const dataGoToEndButton = document.querySelector("[data-goto-end]");
+
 const clearBookButton = document.querySelector("[data-clear-book]");
 const addBookButton = document.querySelector("[data-add-book]");
 const closeFormButton = document.querySelector("[data-close-form]");
@@ -10,8 +13,21 @@ const bookForm = document.querySelector("[data-form-container]");
 const idElement = bookForm.querySelector("#book__id");
 const bookFormInputs = bookForm.querySelectorAll(".form__input");
 
+window.addEventListener("resize", () => {
+	setMaxBooks();
+});
+
 createBookButton.addEventListener("click", (e) => {
 	openBookForm();
+});
+
+createBlankButton.addEventListener("click", (e) => {
+	addBook(null, "", "book", 1, false);
+});
+
+dataGoToEndButton.addEventListener("click", () => {
+	location.href = "#";
+	location.href = "#end";
 });
 
 addBookButton.addEventListener("click", (e) => {
@@ -92,6 +108,7 @@ export function openBookForm(
 	}
 
 	bookForm.classList.remove("hidden");
+	bookFormInputs[0].focus();
 }
 
 function closeBookForm() {

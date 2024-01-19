@@ -16,16 +16,18 @@
 		<title>ScreenStacker</title>
 
 		<!-- Icon -->
-		<link rel="shortcut icon" href="./images/screenstackerlogo.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="./images/icon.ico" type="image/x-icon" />
 
 		<!-- Scripts -->
 		<script type="module" src="./scripts/index.js" defer></script>
 	</head>
 	<body>
 		<main>
-			<h1>ScreenStacker</h1>
-			<h2>Bookshelf-like series organizer</h2>
+			<h1>Screen<span>Stacker</span></h1>
+			<h2>Bookshelf-like media organizer</h2>
 			<button type="button" class="large__btn create__btn" data-create-book>+ Create Book</button>
+			<button type="button" class="large__btn create__btn" data-create-blank>+ Create Blank</button>
+			<button class="large__btn function__btn" data-goto-end>˅ Go to End</button>
 			<section id="bookshelf" class="bookshelf">
 				<div class="shelf"></div>
 			</section>
@@ -66,7 +68,7 @@
 				<button type="button" class="btn__close__form" data-close-form>X</button>
 				<button type="button" class="btn__delete__item" data-delete-book>🗑️</button>
 			</section>
-			<button type="button" class="large__btn danger__btn" data-clear-book>⚠ Clear Books</button>
+			<button type="button" class="large__btn danger__btn" id="end" data-clear-book>⚠ Clear Books</button>
 		</main>
 	</body>
 </html>

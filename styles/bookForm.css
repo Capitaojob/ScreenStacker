@@ -9,6 +9,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
+	background-color: var(--white);
 }
 
 .form__container img {
@@ -22,7 +23,6 @@
 	position: relative;
 	height: 100%;
 	width: 60%;
-	background-color: var(--white);
 	padding: 40px 50px 10px 50px;
 	border-radius: 0 5px 5px 0;
 	color: #222;
@@ -124,7 +124,7 @@
 	display: none !important  ;
 }
 
-.large__btn {
+/* .large__btn {
 	border: 1px solid rgb(0, 0, 0);
 	background-color: white;
 	padding: 10px;
@@ -142,7 +142,7 @@
 	color: var(--green) !important;
 	border-color: var(--green);
 	background-color: #80ff80;
-}
+} */
 
 @media screen and (max-height: 700px) {
 	.form__container {
