@@ -8,8 +8,8 @@
 	cursor: grab;
 }
 
-.bookshelf .shelf .book:hover,
-.bookshelf .shelf .book:focus {
+.bookshelf .shelf .book:hover
+/* ,.bookshelf .shelf .book:focus  */ {
 	transform: scale(1.2);
 	box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.4);
 }

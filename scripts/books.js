@@ -1,9 +1,12 @@
 import { openBookForm } from "./index.js";
 import { generateRandomId } from "./randomId.js";
+import { createErrorMessage } from "./warningMessage.js";
 
 let MAX_BOOKS;
 let BOOKS = getBooks();
 const bookshelfDiv = document.querySelector("#bookshelf");
+let removeBookStage = 0;
+let removeBookId = "";
 
 export function addBook(book = null, name = null, mediaType = null, length = null, completed = null) {
 	const bookshelfShelfs = getBookshelfShelfs();
@@ -134,7 +137,21 @@ function addBookClickEvent(newBook) {
 function addBookMiddleClickEvent(newBook) {
 	newBook.addEventListener("contextmenu", (e) => {
 		e.preventDefault();
-		deleteBook(e.target.id);
+		if (removeBookStage === 0) {
+			createErrorMessage("Warning", "Do you really want to remove the book? Right-click again to remove");
+			removeBookStage = 1;
+			removeBookId = e.target.id;
+
+			setTimeout(() => {
+				removeBookStage = 0;
+				removeBookId = 0;
+			}, 10000);
+		} else if (removeBookStage === 1 && removeBookId === e.target.id) {
+			deleteBook(e.target.id);
+		} else {
+			removeBookStage = 0;
+			removeBookId = "";
+		}
 	});
 }
 
@@ -199,12 +216,11 @@ export function clearBooks() {
 }
 
 export function setMaxBooks() {
-	console.log(window.innerWidth);
-	if (window.innerWidth > 800) {
-		MAX_BOOKS = Math.floor((Math.min(window.innerWidth, 1700) - 0.3 * window.innerWidth) / 94);
+	const windowWidth = window.innerWidth;
+	if (windowWidth > 800) {
+		MAX_BOOKS = Math.floor((Math.min(windowWidth, 1700) - 0.3 * windowWidth) / 93);
 	} else {
-		console.log("small");
-		MAX_BOOKS = Math.floor((window.innerWidth - 0.2 * window.innerWidth) / 92);
+		MAX_BOOKS = Math.floor((windowWidth - 0.2 * windowWidth) / 92);
 	}
 
 	renderBooks();

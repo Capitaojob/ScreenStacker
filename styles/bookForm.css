@@ -124,26 +124,6 @@
 	display: none !important  ;
 }
 
-/* .large__btn {
-	border: 1px solid rgb(0, 0, 0);
-	background-color: white;
-	padding: 10px;
-	font-size: 1.4em;
-	cursor: pointer;
-}
-
-.danger__btn {
-	color: rgb(99, 14, 14) !important;
-	border-color: rgb(99, 14, 14);
-	background-color: #ff8080;
-}
-
-.create__btn {
-	color: var(--green) !important;
-	border-color: var(--green);
-	background-color: #80ff80;
-} */
-
 @media screen and (max-height: 700px) {
 	.form__container {
 		height: 80%;
