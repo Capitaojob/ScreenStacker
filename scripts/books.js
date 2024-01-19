@@ -199,7 +199,14 @@ export function clearBooks() {
 }
 
 export function setMaxBooks() {
-	MAX_BOOKS = Math.floor((Math.min(window.innerWidth, 1700) - 0.3 * window.innerWidth) / 90);
+	console.log(window.innerWidth);
+	if (window.innerWidth > 800) {
+		MAX_BOOKS = Math.floor((Math.min(window.innerWidth, 1700) - 0.3 * window.innerWidth) / 94);
+	} else {
+		console.log("small");
+		MAX_BOOKS = Math.floor((window.innerWidth - 0.2 * window.innerWidth) / 92);
+	}
+
 	renderBooks();
 }
 

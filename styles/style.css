@@ -159,6 +159,12 @@ a {
 	h2 {
 		font-size: 1em;
 	}
+
+	.large__btn {
+		display: block;
+		width: 40%;
+		min-width: 145px;
+	}
 }
 
 /* .bookshelf .shelf:last-child::before {
