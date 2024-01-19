@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/books.css" />
+    <link rel="stylesheet" href="./styles/bookForm.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+    <!-- Title -->
+    <title>ScreenStacker</title>
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="./images/screenstackerlogo.ico" type="image/x-icon" />
+
+    <!-- Scripts -->
+    <script type="module" src="./scripts/index.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>ScreenStacker</h1>
+      <h2>Bookshelf-like series organizer</h2>
+      <button type="button" class="large__btn create__btn" data-create-book>+ Create Book</button>
+      <section id="bookshelf" class="bookshelf">
+        <div class="shelf"></div>
+      </section>
+      <section class="form__container hidden" data-form-container>
+        <img src="./images/formside.png" />
+        <div id="create_book" class="create__book">
+          <h6 id="book__id"></h6>
+          <h3>Create Book</h3>
+          <form>
+            <div>
+              <label for="name">Book Name *</label>
+              <input class="form__input" type="text" name="name" id="book_name" minlength="3" required />
+            </div>
+
+            <div>
+              <label for="type">Media Type *</label>
+              <select class="form__input" name="type" id="mediatype" required>
+                <option value="book">Book</option>
+                <option value="movie">Movie</option>
+                <option value="series">Series</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="media_length">Length *</label>
+              <!-- add listener to change based on if it is book, movie or series -->
+              <input class="form__input" type="number" name="media_length" id="media_length" min="1" value="1" required />
+            </div>
+
+            <div class="checkbox__form__div">
+              <input class="form__input" type="checkbox" name="completed" id="completed" />
+              <label for="completed">Completed</label>
+            </div>
+
+            <button type="submit" class="btn__add__book" data-add-book>Create Book</button>
+          </form>
+        </div>
+        <button type="button" class="btn__close__form" data-close-form>X</button>
+        <button type="button" class="btn__delete__item" data-delete-book>🗑️</button>
+      </section>
+      <button type="button" class="large__btn danger__btn" data-clear-book>⚠ Clear Books</button>
+    </main>
+  </body>
+</html>
