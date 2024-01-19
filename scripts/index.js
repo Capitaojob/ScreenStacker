@@ -28,6 +28,10 @@ createBlankButton.addEventListener("click", (e) => {
 dataGoToEndButton.addEventListener("click", () => {
 	location.href = "#";
 	location.href = "#end";
+
+	setTimeout(() => {
+		history.replaceState(null, null, window.location.pathname + window.location.search);
+	}, 1000);
 });
 
 addBookButton.addEventListener("click", (e) => {
