@@ -1,91 +1,90 @@
 .bookshelf .shelf .book {
-	position: relative;
-	width: 90px;
-	height: 100%;
-	background-color: #006400;
-	transition: 200ms ease-out all;
-	border-radius: 4px;
-	cursor: grab;
+    position: relative;
+    width: 90px;
+    height: 100%;
+    background-color: #006400;
+    transition: 200ms ease-out all;
+    border-radius: 4px;
+    cursor: grab;
 }
 
 .bookshelf .shelf .book:hover
 /* ,.bookshelf .shelf .book:focus  */ {
-	transform: scale(1.2);
-	box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.4);
+    transform: scale(1.2);
+    box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.4);
 }
 
 .bookshelf .shelf .book:focus {
-	cursor: grabbing;
+    cursor: grabbing;
 }
 
 .bookshelf .shelf .book.decorated::after {
-	content: "";
-	position: absolute;
-	right: 0;
-	width: 100%;
-	height: 10%;
-	top: 20px;
-	background-color: var(--gold);
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 10%;
+    top: 20px;
+    background-color: var(--gold);
 }
 
 .bookshelf .shelf .book.decorated::before {
-	content: "";
-	position: absolute;
-	right: 0;
-	width: 100%;
-	height: 10%; /* 30px */
-	bottom: 20px;
-	background-color: var(--gold);
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 10%; /* 30px */
+    bottom: 20px;
+    background-color: var(--gold);
 }
 
 .bookshelf .shelf .book > p {
-	position: absolute;
-	pointer-events: none;
-	user-select: none;
-	text-align: center;
-	top: 50%;
-	left: 50%;
-	height: 68%;
-	transform: translate(-50%, -50%);
-	writing-mode: vertical-rl;
-	font-size: 2em;
-	font-weight: 600;
-	/* -webkit-text-stroke: 2px #111; */
-	stroke: 2px #111;
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    height: 68%;
+    transform: translate(-50%, -50%);
+    writing-mode: vertical-rl;
+    font-size: 1.6em;
+    font-weight: 600;
+    stroke: 2px #111;
 }
 
 .book .label {
-	position: relative;
-	width: 70%;
-	margin: 0 auto;
-	height: 40%;
-	border-radius: 20px;
-	background-color: var(--label-color);
-	top: 50%;
-	transform: translateY(-50%);
-	user-select: none;
-	pointer-events: none;
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: 40%;
+    border-radius: 20px;
+    background-color: var(--label-color);
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+    pointer-events: none;
 }
 
 .book .label .vertical__text {
-	position: absolute;
-	text-align: center;
-	writing-mode: vertical-rl;
-	margin: 0 auto;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 100%;
+    position: absolute;
+    text-align: center;
+    writing-mode: vertical-rl;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
 }
 
 .book .label.fancy::after {
-	content: "";
-	right: 20%;
-	width: 60%;
-	height: 130%; /* 30px */
-	top: -15%;
-	border-radius: 10px;
-	background-color: var(--label-color);
-	position: absolute;
-	z-index: -1;
+    content: "";
+    right: 20%;
+    width: 60%;
+    height: 130%; /* 30px */
+    top: -15%;
+    border-radius: 10px;
+    background-color: var(--label-color);
+    position: absolute;
+    z-index: -1;
 }
