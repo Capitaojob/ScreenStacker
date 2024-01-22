@@ -43,18 +43,19 @@
 				<div class="shelf"></div>
 			</section>
 			<section class="form__container hidden" data-form-container>
-				<img src="./images/formside.png" />
+				<div id="side_image"></div>
+				<!-- <img src="./images/formside.png" id="side_image" /> -->
 				<div id="create_book" class="create__book">
 					<h6 id="book__id"></h6>
 					<h3>Create Book</h3>
 					<form>
 						<div>
-							<label for="name">Book Name *</label>
+							<label for="name" class="requiredLabel">Book Name</label>
 							<input class="form__input" type="text" name="name" id="book_name" minlength="3" required />
 						</div>
 
 						<div>
-							<label for="type">Media Type *</label>
+							<label for="type" class="requiredLabel">Media Type</label>
 							<select class="form__input" name="type" id="mediatype" required>
 								<option value="book">Book</option>
 								<option value="movie">Movie</option>
@@ -63,7 +64,7 @@
 						</div>
 
 						<div>
-							<label for="media_length">Length *</label>
+							<label for="media_length" id="media_length_label" class="requiredLabel">Pages</label>
 							<!-- add listener to change based on if it is book, movie or series -->
 							<input class="form__input" type="number" name="media_length" id="media_length" min="1" value="1" required />
 						</div>

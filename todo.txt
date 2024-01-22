@@ -1,0 +1,5 @@
+- Easter Eggs
+- Writeable PDF
+  - ia que le o pdf com a voz do aatrox do lol (text to speech)
+- Drag n Drop
+- Better Writing functions

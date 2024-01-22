@@ -5,6 +5,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	border-radius: 5px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -12,11 +13,28 @@
 	background-color: var(--white);
 }
 
-.form__container img {
+#side_image {
 	width: 40%;
 	height: 100%;
 	object-fit: cover;
-	border-radius: 5px 0 0 5px;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	background-image: url("../images/backgrounds/default.png");
+}
+
+#side_image.written {
+	background-image: url("../images/backgrounds/written.jpg");
+}
+
+#side_image.antique {
+	background-image: url("../images/backgrounds/antique.jpg");
+}
+
+#side_image.dragon {
+	background-image: url("../images/backgrounds/dragon.jpg");
 }
 
 .form__container .create__book {
@@ -63,6 +81,16 @@
 	font-family: "Times New Roman", Times, serif;
 	font-size: 2.5em;
 	margin-bottom: 40px;
+}
+
+.create__book #book__id,
+.create__book label,
+.create__book .btn__add__book {
+	user-select: none;
+}
+
+.create__book .requiredLabel::after {
+	content: "*";
 }
 
 .create__book form {
@@ -133,6 +161,16 @@
 @media screen and (max-width: 1450px) {
 	.form__container {
 		width: 70%;
+	}
+}
+
+@media screen and (min-width: 1120px) {
+	.form__container #side_image {
+		width: 50%;
+	}
+
+	.form__container .create__book {
+		width: 50%;
 	}
 }
 
