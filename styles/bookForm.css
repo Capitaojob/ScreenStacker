@@ -1,211 +1,219 @@
 .form__container {
-	position: fixed;
-	width: 50%;
-	height: 60%;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border-radius: 5px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: row;
-	background-color: var(--white);
+    position: fixed;
+    width: 50%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--white);
 }
 
 #side_image {
-	width: 40%;
-	height: 100%;
-	object-fit: cover;
+    width: 40%;
+    height: 100%;
+    object-fit: cover;
 
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
-	background-image: url("../images/backgrounds/default.png");
+    background-image: url("../images/backgrounds/default.png");
 }
 
 #side_image.written {
-	background-image: url("../images/backgrounds/written.jpg");
+    background-image: url("../images/backgrounds/written.jpg");
 }
 
 #side_image.antique {
-	background-image: url("../images/backgrounds/antique.jpg");
+    background-image: url("../images/backgrounds/antique.jpg") !important;
 }
 
 #side_image.dragon {
-	background-image: url("../images/backgrounds/dragon.jpg");
+    background-image: url("../images/backgrounds/dragon.jpg") !important;
 }
 
 .form__container .create__book {
-	position: relative;
-	height: 100%;
-	width: 60%;
-	padding: 40px 50px 10px 50px;
-	border-radius: 0 5px 5px 0;
-	color: #222;
+    position: relative;
+    height: 100%;
+    width: 60%;
+    padding: 40px 50px 10px 50px;
+    border-radius: 0 5px 5px 0;
+    color: #222;
 }
 
 .form__container .btn__close__form {
-	position: absolute;
-	background: transparent;
-	top: 0px;
-	right: 10px;
-	font-size: 1.6em;
-	border: none;
-	cursor: cell;
-	transition: 300ms ease all;
+    position: absolute;
+    background: transparent;
+    top: 0px;
+    right: 10px;
+    font-size: 1.6em;
+    border: none;
+    cursor: cell;
+    transition: 300ms ease all;
 }
 
 .form__container .btn__close__form:hover {
-	transform: /*rotate(180deg)*/ scale(1.4);
-	color: rgb(197, 43, 23);
+    transform: /*rotate(180deg)*/ scale(1.4);
+    color: rgb(197, 43, 23);
 }
 
 .form__container .btn__delete__item {
-	position: absolute;
-	background: transparent;
-	bottom: 10px;
-	right: 10px;
-	font-size: 1.6em;
-	border: none;
-	cursor: cell;
-	transition: 300ms ease all;
+    position: absolute;
+    background: transparent;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.6em;
+    border: none;
+    cursor: cell;
+    transition: 300ms ease all;
 }
 
 .form__container .btn__delete__item:hover {
-	transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .create__book h3 {
-	font-family: "Times New Roman", Times, serif;
-	font-size: 2.5em;
-	margin-bottom: 40px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2.5em;
+    margin-bottom: 40px;
 }
 
 .create__book #book__id,
 .create__book label,
 .create__book .btn__add__book {
-	user-select: none;
+    user-select: none;
 }
 
 .create__book .requiredLabel::after {
-	content: "*";
+    content: "*";
 }
 
 .create__book form {
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: space-between;
-	row-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 20px;
 }
 
 .create__book form div {
-	display: inline-block;
-	position: relative;
-	width: 45%;
-	height: 60px;
+    display: inline-block;
+    position: relative;
+    width: 45%;
+    height: 60px;
 }
 
 .create__book .checkbox__form__div {
-	display: flex;
-	align-items: center;
-	justify-content: left;
-	flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row;
 }
 
 .create__book form input,
 .create__book form select {
-	width: 100%;
-	height: 40px;
-	/* margin: 5px 0 20px 0; */
-	padding: 0 4px;
+    width: 100%;
+    height: 40px;
+    /* margin: 5px 0 20px 0; */
+    padding: 0 4px;
 }
 
 .create__book .checkbox {
-	margin-right: 5px;
+    margin-right: 5px;
 }
 
 .create__book form input[type="checkbox"] {
-	width: 20px;
-	height: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 .create__book .btn__add__book {
-	position: absolute;
-	width: 50%;
-	height: 60px;
-	left: 50%;
-	bottom: -30px;
-	transform: translateX(-50%);
-	font-size: 1.4em;
-	font-weight: 500;
-	border: none;
-	background-color: var(--green);
-	color: var(--white);
-	z-index: 100;
-	cursor: pointer;
+    position: absolute;
+    width: 50%;
+    height: 60px;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    font-size: 1.4em;
+    font-weight: 500;
+    border: none;
+    background-color: var(--green);
+    color: var(--white);
+    z-index: 100;
+    cursor: pointer;
+}
+
+.create__book .btn__add__book * {
+    user-select: none;
+    pointer-events: none;
 }
 
 .hidden {
-	display: none !important  ;
+    display: none !important  ;
 }
 
 @media screen and (max-height: 700px) {
-	.form__container {
-		height: 80%;
-	}
+    .form__container {
+        height: 80%;
+    }
 }
 
-@media screen and (max-width: 1450px) {
-	.form__container {
-		width: 70%;
-	}
+@media screen and (max-width: 1750px) {
+    .form__container {
+        width: 70%;
+    }
 }
 
 @media screen and (min-width: 1120px) {
-	.form__container #side_image {
-		width: 50%;
-	}
+    .form__container #side_image {
+        width: 50%;
+    }
 
-	.form__container .create__book {
-		width: 50%;
-	}
+    .form__container .create__book {
+        width: 50%;
+    }
 }
 
 @media screen and (max-width: 1000px) {
-	.form__container {
-		width: 90%;
-	}
+    .form__container {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 850px) {
-	.form__container {
-		width: 80%;
-		height: 80%;
-	}
+    .form__container {
+        height: 80%;
+    }
 
-	.form__container .create__book form div {
-		width: 100%;
-	}
+    .form__container .create__book form div {
+        width: 100%;
+    }
 
-	.form__container .create__book form {
-		flex-direction: column;
-	}
+    .form__container .create__book form {
+        flex-direction: column;
+    }
+
+    .form__container .create__book .btn__add__book {
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 670px) {
-	.form__container {
-		width: 95%;
-	}
+    .form__container {
+        width: 95%;
+    }
 
-	.form__container img {
-		width: 0%;
-		display: none;
-	}
+    .form__container #side_image {
+        width: 0%;
+        display: none;
+    }
 
-	.form__container .create__book {
-		width: 100%;
-	}
+    .form__container .create__book {
+        width: 100%;
+    }
 }

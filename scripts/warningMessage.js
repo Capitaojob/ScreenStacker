@@ -14,6 +14,11 @@ export function createErrorMessage(warn, message) {
         errorMessage.innerText = message;
         errorMessageElement.appendChild(errorMessage);
 
+        errorMessageElement.addEventListener("click", (e) => {
+            const parent = e.target.parentElement;
+            parent.removeChild(e.target);
+        });
+
         document.querySelector("body").appendChild(errorMessageElement);
     }
 
