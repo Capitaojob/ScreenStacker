@@ -50,13 +50,13 @@
 					<h3>Create Book</h3>
 					<form>
 						<div>
-							<label for="name" class="requiredLabel">Book Name</label>
-							<input class="form__input" type="text" name="name" id="book_name" minlength="3" required />
+							<label for="media_name" class="requiredLabel">Book Name</label>
+							<input class="form__input" type="text" name="media_name" id="media_name" minlength="3" required />
 						</div>
 
 						<div>
-							<label for="type" class="requiredLabel">Media Type</label>
-							<select class="form__input" name="type" id="mediatype" required>
+							<label for="media_type" class="requiredLabel">Media Type</label>
+							<select class="form__input" name="media_type" id="media_type" required>
 								<option value="book">Book</option>
 								<option value="movie">Movie</option>
 								<option value="series">Series</option>
@@ -65,13 +65,17 @@
 
 						<div>
 							<label for="media_length" id="media_length_label" class="requiredLabel">Pages</label>
-							<!-- add listener to change based on if it is book, movie or series -->
 							<input class="form__input" type="number" name="media_length" id="media_length" min="1" value="1" required />
 						</div>
 
+						<div>
+							<label for="media_watched" id="media_watched_label" class="requiredLabel">Read</label>
+							<input class="form__input" type="number" name="media_watched" id="media_watched" min="1" value="1" required />
+						</div>
+
 						<div class="checkbox__form__div">
-							<input class="form__input checkbox" type="checkbox" name="completed" id="completed" />
-							<label for="completed">Completed</label>
+							<input class="form__input checkbox" type="checkbox" name="media_completed" id="media_completed" />
+							<label for="media_completed">Completed</label>
 						</div>
 
 						<button type="submit" class="btn__add__book" data-button-action="create">Create Book</button>

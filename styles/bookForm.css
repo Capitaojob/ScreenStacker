@@ -57,16 +57,17 @@
 	position: relative;
 	height: 100%;
 	width: 60%;
-	padding: 40px 50px 10px 50px;
+	padding: 40px 50px 30px 50px;
 	border-radius: 0 5px 5px 0;
 	color: #222;
+	overflow-y: scroll;
 }
 
 .form__container .btn__close__form {
 	position: absolute;
 	background: transparent;
 	top: 0px;
-	right: 10px;
+	right: 20px;
 	font-size: 1.6em;
 	border: none;
 	cursor: cell;
@@ -82,7 +83,7 @@
 	position: absolute;
 	background: transparent;
 	bottom: 10px;
-	right: 10px;
+	right: 20px;
 	font-size: 1.6em;
 	border: none;
 	cursor: cell;
@@ -155,11 +156,27 @@
 	cursor: pointer;
 }
 
-.create__book .btn__add__book {
-	position: absolute;
+/* .create__book .btn__add__book {
+	position: fixed;
 	width: 50%;
 	height: 60px;
 	left: 50%;
+	bottom: -30px;
+	transform: translateX(-50%);
+	font-size: 1.4em;
+	font-weight: 500;
+	border: none;
+	background-color: var(--green);
+	color: var(--white);
+	z-index: 100;
+	cursor: pointer;
+} */
+
+.create__book .btn__add__book {
+	position: fixed;
+	width: 25%;
+	height: 60px;
+	left: 75%;
 	bottom: -30px;
 	transform: translateX(-50%);
 	font-size: 1.4em;
@@ -180,18 +197,14 @@
 	display: none !important  ;
 }
 
+/* Max Height */
 @media screen and (max-height: 700px) {
 	.form__container {
 		height: 80%;
 	}
 }
 
-@media screen and (max-width: 1750px) {
-	.form__container {
-		width: 70%;
-	}
-}
-
+/* Min Width */
 @media screen and (min-width: 1120px) {
 	.form__container #side_image {
 		width: 50%;
@@ -202,9 +215,28 @@
 	}
 }
 
+/* Max Width */
+@media screen and (max-width: 1750px) {
+	.form__container {
+		width: 70%;
+	}
+}
+
+@media screen and (max-width: 1120px) {
+	.form__container .create__book .btn__add__book {
+		width: 30%;
+		left: 70%;
+	}
+}
+
 @media screen and (max-width: 1000px) {
 	.form__container {
 		width: 90%;
+	}
+
+	.form__container .create__book .btn__add__book {
+		width: 30%;
+		left: 70%;
 	}
 }
 
@@ -220,10 +252,6 @@
 	.form__container .create__book form {
 		flex-direction: column;
 	}
-
-	.form__container .create__book .btn__add__book {
-		width: 70%;
-	}
 }
 
 @media screen and (max-width: 670px) {
@@ -238,5 +266,10 @@
 
 	.form__container .create__book {
 		width: 100%;
+	}
+
+	.form__container .create__book .btn__add__book {
+		width: 55%;
+		left: 50%;
 	}
 }

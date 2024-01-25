@@ -8,129 +8,167 @@ const closeFormButton = document.querySelector("[data-close-form]");
 const bookForm = document.querySelector("[data-form-container]");
 const idElement = bookForm.querySelector("#book__id");
 const bookFormInputs = bookForm.querySelectorAll(".form__input");
-const bookTypeSelect = bookForm.querySelector("#mediatype");
+const bookTypeSelect = bookForm.querySelector("#media_type");
 
 addBookButton.addEventListener("click", (e) => {
-    let valid = true;
+	let valid = true;
 
-    bookFormInputs.forEach((input) => {
-        if (!input.checkValidity()) {
-            valid = false;
-            return;
-        }
-    });
+	bookFormInputs.forEach((input) => {
+		if (!input.checkValidity()) {
+			valid = false;
+			return;
+		}
+	});
 
-    if (valid === false) return;
+	if (valid === false) return;
 
-    e.preventDefault();
+	e.preventDefault();
 
-    if (e.target.dataset.buttonAction === "create") {
-        addBook(null, bookFormInputs[0].value ?? "", bookFormInputs[1].value ?? "", bookFormInputs[2].value ?? 1, bookFormInputs[3].checked ?? false);
-    } else {
-        updateBook(
-            idElement.innerText,
-            bookFormInputs[0].value ?? "",
-            bookFormInputs[1].value ?? "",
-            bookFormInputs[2].value ?? 1,
-            bookFormInputs[3].checked ?? false
-        );
-    }
+	const mediaName = document.getElementById("media_name");
+	const mediaType = document.getElementById("media_type");
+	const mediaLength = document.getElementById("media_length");
+	const mediaWatched = document.getElementById("media_watched");
+	const mediaCompleted = document.getElementById("media_completed");
 
-    closeBookForm();
+	if (e.target.dataset.buttonAction === "create") {
+		addBook(null, mediaName.value ?? "", mediaType.value ?? "", mediaLength.value ?? 1, mediaWatched.value ?? "", mediaCompleted.checked ?? false);
+	} else {
+		updateBook(idElement.innerText, mediaName.value ?? "", mediaType.value ?? "", mediaLength.value ?? 1, mediaWatched.value ?? "", mediaCompleted.checked ?? false);
+	}
+
+	closeBookForm();
 });
 
 closeFormButton.addEventListener("click", () => {
-    closeBookForm();
+	closeBookForm();
 });
 
 deleteBookButton.addEventListener("click", () => {
-    deleteBook(idElement.innerHTML); //e.target.parentElement.querySelector("#book__id")
-    closeBookForm();
+	deleteBook(idElement.innerHTML); //e.target.parentElement.querySelector("#book__id")
+	closeBookForm();
 });
 
 export function setMediaChangeEventListener() {
-    bookTypeSelect.addEventListener("change", () => {
-        changeMediaLengthLabelType();
-    });
+	bookTypeSelect.addEventListener("change", () => {
+		changeMediaLengthLabelType();
+	});
+}
+
+// Add into index
+export function setMediaLengthChangeEvent() {
+	const mediaLength = document.getElementById("media_length");
+	const mediaWatched = document.getElementById("media_watched");
+
+	mediaLength.addEventListener("change", (e) => {
+		updateMaxLengthAndCompleted(mediaLength, mediaWatched);
+	});
+
+	mediaWatched.addEventListener("change", (e) => {
+		updateMaxLengthAndCompleted(mediaLength, mediaWatched);
+	});
 }
 
 export function changeMediaLengthLabelType() {
-    const bookType = bookTypeSelect.value;
-    const lengthLabel = bookForm.querySelector("#media_length_label");
-    if (bookType === "book") {
-        lengthLabel.innerHTML = "Pages";
-    } else if (bookType === "movie") {
-        lengthLabel.innerHTML = "Hours";
-    } else if (bookType === "series") {
-        lengthLabel.innerHTML = "Episodes/Seasons";
-    }
+	const bookType = bookTypeSelect.value;
+	const lengthLabel = bookForm.querySelector("#media_length_label");
+	const readLabel = bookForm.querySelector("#media_watched_label");
+	if (bookType === "book") {
+		lengthLabel.innerHTML = "Pages";
+		readLabel.innerHTML = "Read";
+	} else if (bookType === "movie") {
+		lengthLabel.innerHTML = "Hours";
+		readLabel.innerHTML = "Watched";
+	} else if (bookType === "series") {
+		lengthLabel.innerHTML = "Episodes/Seasons";
+		readLabel.innerHTML = "Watched";
+	}
+}
+
+function updateMaxLengthAndCompleted(lengthElement, watchedElement) {
+	const length = Number(lengthElement.value);
+	const watched = Number(watchedElement.value);
+	const mediaCompleted = document.getElementById("media_completed");
+
+	if (length > watched) {
+		mediaCompleted.checked = false;
+		return;
+	}
+
+	if (length < watched) watchedElement.value = length;
+
+	mediaCompleted.checked = true;
 }
 
 export function openBookForm(
-    name = "",
-    mediaType = "book",
-    length = 1,
-    completed = false,
-    title = "Create Book",
-    // buttonText = "Create Book", //isUpdate = false
-    isUpdate = false,
-    formSideImageClass = "",
-    // deleteBtnDisplay = "none", // isUpdate = false
-    id = ""
+	name = "",
+	type = "book",
+	length = 1,
+	read = 1,
+	completed = false,
+	title = "Create Book",
+	// buttonText = "Create Book", //isUpdate = false
+	isUpdate = false,
+	formSideImageClass = "",
+	// deleteBtnDisplay = "none", // isUpdate = false
+	id = ""
 ) {
-    resetBookFormStyles();
+	resetBookFormStyles();
 
-    if (completed === "true") completed = true;
-    else if (completed === "false") completed = false;
+	if (completed === "true") completed = true;
+	else if (completed === "false") completed = false;
 
-    if (id !== "") applyNameSecrets(name, id);
+	if (id !== "") applyNameSecrets(name, id);
 
-    bookFormInputs[0].value = name;
-    bookFormInputs[1].value = mediaType;
-    bookFormInputs[2].value = length;
-    bookFormInputs[3].checked = completed;
-    bookForm.querySelector("h3").innerHTML = title;
-    if (formSideImageClass !== "") {
-        const leftFormPage = document.getElementById("side_image");
-        leftFormPage.classList.remove("default");
-        leftFormPage.classList.add(formSideImageClass);
-    }
+	const mediaName = document.getElementById("media_name");
+	const mediaType = document.getElementById("media_type");
+	const mediaLength = document.getElementById("media_length");
+	const mediaWatched = document.getElementById("media_watched");
+	const mediaCompleted = document.getElementById("media_completed");
 
-    bookForm.querySelector(".btn__delete__item").style.display = isUpdate ? "initial" : "none";
+	mediaName.value = name;
+	mediaType.value = type;
+	mediaLength.value = length;
+	mediaWatched.value = read;
+	mediaCompleted.checked = completed;
+	bookForm.querySelector("h3").innerHTML = title;
+	if (formSideImageClass !== "") {
+		const leftFormPage = document.getElementById("side_image");
+		leftFormPage.classList.remove("default");
+		leftFormPage.classList.add(formSideImageClass);
+	}
 
-    // Change button properties
-    const formActionButton = bookForm.querySelector("button");
-    if (isUpdate) {
-        formActionButton.innerHTML = "Save Changes";
-        formActionButton.setAttribute("data-button-action", "update");
-    } else {
-        formActionButton.innerHTML = "Create Book";
-        formActionButton.setAttribute("data-button-action", "create");
-    }
+	// Change properties based on action
+	const formActionButton = bookForm.querySelector("button");
+	const bookIdElement = bookForm.querySelector("#book__id");
+	if (isUpdate) {
+		formActionButton.innerHTML = "Save Changes";
+		formActionButton.setAttribute("data-button-action", "update");
+		bookForm.querySelector(".btn__delete__item").style.display = "initial";
+		mediaWatched.max = Number(mediaLength.value);
+		bookIdElement.style.display = "block";
+		bookIdElement.innerText = id;
+	} else {
+		formActionButton.innerHTML = "Create Book";
+		formActionButton.setAttribute("data-button-action", "create");
+		bookForm.querySelector(".btn__delete__item").style.display = "none";
+		bookIdElement.style.display = "none";
+	}
 
-    const bookIdElement = bookForm.querySelector("#book__id");
-    if (id === "") {
-        bookIdElement.style.display = "none";
-    } else {
-        bookIdElement.style.display = "block";
-        bookIdElement.innerText = id;
-    }
+	changeMediaLengthLabelType();
 
-    changeMediaLengthLabelType();
-
-    bookForm.classList.remove("hidden");
-    bookFormInputs[0].focus();
+	bookForm.classList.remove("hidden");
+	mediaName.focus();
 }
 
 export function closeBookForm() {
-    bookForm.classList.add("hidden");
+	bookForm.classList.add("hidden");
 }
 
 function resetBookFormStyles() {
-    const rightFormPage = document.getElementById("create_book");
-    const leftFormPage = document.getElementById("side_image");
+	const rightFormPage = document.getElementById("create_book");
+	const leftFormPage = document.getElementById("side_image");
 
-    leftFormPage.className = "";
-    leftFormPage.classList.add("default");
-    rightFormPage.style.background = "#ffffff";
+	leftFormPage.className = "";
+	leftFormPage.classList.add("default");
+	rightFormPage.style.background = "#ffffff";
 }
